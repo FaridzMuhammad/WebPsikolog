@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('sesis', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("dokter_id");
             $table->timestamps();
         });
     }

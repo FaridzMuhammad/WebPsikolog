@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('dokters', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_dokter');
+            $table->string('email_dokter')->unique();
+            $table->string('nohp_dokter');
+            $table->longText('alamat_dokter');
             $table->timestamps();
         });
     }
