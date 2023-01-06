@@ -17,6 +17,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="AdminLTE/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="AdminLTE/dist/css/adminlte.min.css">
+    {{-- <link rel="stylesheet" href="css/login.css"> --}}
 </head>
 
 <body class="hold-transition sidebar-mini">

@@ -8,7 +8,7 @@ use App\Http\Controllers\formDiagnosaController;
 use App\Http\Controllers\listDiagnosaController;
 use App\Http\Controllers\obatController;
 use App\Http\Controllers\transaksiController;
-
+use App\Http\Controllers\loginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +21,7 @@ use App\Http\Controllers\transaksiController;
 */
 
 Route::get('/', function () {
-    return view('Layouts/Sidebar');
+    return view('/login/loginsignup');
 });
 
 // Get
@@ -35,6 +35,7 @@ Route::get('/resepObat', [obatController::class, 'resep']);
 Route::get('/listDokter', [listPasienController::class, 'dokter']);
 Route::get('/Transaksi', [transaksiController::class, 'index']);
 Route::get('/listTransaksi', [transaksiController::class, 'datatransaksi']);
+// Route::get('/Login', [loginController::class, 'index']);
 
 // Post
 Route::post('/formPasien/submit', [formPasienController::class, 'store'])->name('form.submit');
