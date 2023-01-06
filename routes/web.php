@@ -6,6 +6,9 @@ use App\Http\Controllers\formPasienController;
 use App\Http\Controllers\listPasienController;
 use App\Http\Controllers\formDiagnosaController;
 use App\Http\Controllers\listDiagnosaController;
+use App\Http\Controllers\obatController;
+use App\Http\Controllers\transaksiController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +29,8 @@ Route::get('/formPasien', [formPasienController::class, 'index']);
 Route::get('/listPasien', [listPasienController::class, 'index']);
 Route::get('/formDiagnosa', [formDiagnosaController::class, 'index']);
 Route::get('/listDiagnosa', [listDiagnosaController::class, 'index']);
+Route::get('/formObat', [obatController::class, 'index']);
+Route::get('/resepObat', [obatController::class, 'resep']);
+Route::get('/listDokter', [listPasienController::class, 'dokter']);
+Route::get('/Transaksi', [transaksiController::class, 'index']);
+Route::get('/listTransaksi', [transaksiController::class, 'datatransaksi']);

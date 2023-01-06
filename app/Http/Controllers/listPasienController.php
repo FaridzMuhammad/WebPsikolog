@@ -8,4 +8,9 @@ class listpasiencontroller extends Controller
     {
         return view('DataPasien.listPasien');
     }
+
+    public function dokter()
+    {
+        return view('DataPasien.listDokter');
+    }
 }

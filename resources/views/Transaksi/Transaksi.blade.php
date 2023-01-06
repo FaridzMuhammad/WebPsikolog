@@ -11,32 +11,21 @@
                 <!-- form start -->
                 <form>
                     <div class="card-body">
-
-                        <div class="form-group" data-select2-id="29">
-                            <label>Nama Pasien</label>
-                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
-                                data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                <option selected="selected" data-select2-id="3">Dokter</option>
-                                <option data-select2-id="34">Pasien</option>
-                            </select>
-                        </div>
-
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Nama</label>
+                            <label for="exampleInputEmail1">Nama Pasien</label>
                             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Email</label>
+                            <label for="exampleInputPassword1">Resep Obat</label>
                             <input type="password" class="form-control" id="exampleInputPassword1"
                                 placeholder="Masukan Email">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Nomor Telepon</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="Masukan Nomer Hp">
+                            <label for="exampleInputPassword1">Tanggal</label>
+                            <input type="date" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Alamat</label>
+                            <label for="exampleInputPassword1">Total Harga</label>
                             <textarea class="form-control" rows="3" placeholder="Masukan Alamat"></textarea>
                         </div>
                         <!-- /.card-body -->

@@ -1,48 +1,43 @@
 @extends('layouts.Sidebar')
 
 @section('content')
+
     <section class="content" style="padding-top: 20px">
         <div class="container-fluid">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Formulir pasien</h3>
+                    <h3 class="card-title">Resep Obat</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form>
                     <div class="card-body">
-
-                        <div class="form-group" data-select2-id="29">
-                            <label>Nama Pasien</label>
-                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
-                                data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                <option selected="selected" data-select2-id="3">Dokter</option>
-                                <option data-select2-id="34">Pasien</option>
-                            </select>
-                        </div>
-
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Nama</label>
+                            <label for="exampleInputEmail1">Nama Resep</label>
                             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Email</label>
+                            <label for="exampleInputPassword1">Nama Obat</label>
                             <input type="password" class="form-control" id="exampleInputPassword1"
                                 placeholder="Masukan Email">
                         </div>
+
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Nomor Telepon</label>
+                            <label for="exampleInputPassword1">Sesi</label>
                             <input type="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="Masukan Nomer Hp">
+                                placeholder="Masukan Email">
                         </div>
+
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Alamat</label>
+                            <label for="exampleInputPassword1">Keterangan</label>
                             <textarea class="form-control" rows="3" placeholder="Masukan Alamat"></textarea>
                         </div>
+
                         <!-- /.card-body -->
                         <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
     </section>
+
 @endsection

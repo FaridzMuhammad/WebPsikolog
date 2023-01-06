@@ -65,7 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Data Pasien
+                                    Data
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -82,13 +82,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>List pasien</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="/listDokter" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Dokter</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item menu-is-opening menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Diagnosa
+                                    Sesi
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -96,24 +102,62 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <li class="nav-item">
                                     <a href="/formDiagnosa" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Formulir diagnosa</p>
+                                        <p>Formulir sesi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/listDiagnosa" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>List diagnosa pasien</p>
+                                        <p>List sesi</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item menu-open">
+                        <li class="nav-item menu-is-opening menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Profile
+                                    Farmasi
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview" style="display: block;">
+                                <li class="nav-item">
+                                    <a href="/formObat" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Formulir Obat</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/resepObat" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Resep Obat</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item menu-is-opening menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Transaksi
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: block;">
+                                <li class="nav-item">
+                                    <a href="/Transaksi" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Data Transaksi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/listTransaksi" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Transaksi</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
