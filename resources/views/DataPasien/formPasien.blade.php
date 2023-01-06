@@ -1,7 +1,5 @@
 @extends('layouts.Sidebar')
 
-@include('sweetalert::alert')
-
 @section('content')
     <section class="content" style="padding-top: 20px">
         <div class="container-fluid">
