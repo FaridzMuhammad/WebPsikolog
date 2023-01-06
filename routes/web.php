@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Dashboard', [DashboardController::class, 'index']);
     Route::get('/formPasien', [formPasienController::class, 'index'])->name('form.pasien');
     Route::get('/listPasien', [listPasienController::class, 'index']);
-    Route::get('/formDiagnosa', [formDiagnosaController::class, 'index']);
+    Route::get('/formDiagnosa', [formDiagnosaController::class, 'index'])->name('form.sesi');
     Route::get('/listDiagnosa', [listDiagnosaController::class, 'index']);
     Route::get('/formObat', [obatController::class, 'index']);
     Route::get('/resepObat', [obatController::class, 'resep']);
@@ -41,4 +41,5 @@ Route::middleware(['auth'])->group(function () {
 
     // Post
     Route::post('/formPasien/submit', [formPasienController::class, 'store'])->name('form.submit');
+    Route::post('/formDiagnosa/submit', [formDiagnosaController::class, 'store'])->name('form.submit.sesi');
 });
