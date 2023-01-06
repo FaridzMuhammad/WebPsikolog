@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sesis', function (Blueprint $table) {
+        Schema::create('pasien', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("dokter_id");
+            $table->string('nama_pasien');
+            $table->string('email_pasien')->unique();
+            $table->string('nohp_pasien');
+            $table->longText('alamat_pasien');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sesis');
+        Schema::dropIfExists('pasien');
     }
 };

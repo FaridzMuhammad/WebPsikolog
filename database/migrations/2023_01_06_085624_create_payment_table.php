@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pasiens', function (Blueprint $table) {
+        Schema::create('payment', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pasien');
-            $table->string('email_pasien')->unique();
-            $table->string('nohp_pasien');
-            $table->longText('alamat_pasien');
+            $table->unsignedBigInteger('id_resep_obat');
+            $table->unsignedBigInteger('id_pasien');
+            $table->date('tanggal_payment');
+            $table->integer('total_harga');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pasiens');
+        Schema::dropIfExists('payment');
     }
 };
