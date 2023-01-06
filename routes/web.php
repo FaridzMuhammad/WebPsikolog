@@ -24,8 +24,9 @@ Route::get('/', function () {
     return view('Layouts/Sidebar');
 });
 
+// Get
 Route::get('/Dashboard', [DashboardController::class, 'index']);
-Route::get('/formPasien', [formPasienController::class, 'index']);
+Route::get('/formPasien', [formPasienController::class, 'index'])->name('form.pasien');
 Route::get('/listPasien', [listPasienController::class, 'index']);
 Route::get('/formDiagnosa', [formDiagnosaController::class, 'index']);
 Route::get('/listDiagnosa', [listDiagnosaController::class, 'index']);
@@ -34,3 +35,6 @@ Route::get('/resepObat', [obatController::class, 'resep']);
 Route::get('/listDokter', [listPasienController::class, 'dokter']);
 Route::get('/Transaksi', [transaksiController::class, 'index']);
 Route::get('/listTransaksi', [transaksiController::class, 'datatransaksi']);
+
+// Post
+Route::post('/formPasien/submit', [formPasienController::class, 'store'])->name('form.submit');
