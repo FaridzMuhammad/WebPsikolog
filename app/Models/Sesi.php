@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Sesi extends Model
 {
     use HasFactory;
+
+    protected $table = 'sesi';
+
+    protected $fillable = [
+        'id',
+        'id_dokter',
+        'id_pasien',
+        'deskripsi_hasil',
+        'tanggal_sesi',
+        'status_sesi',
+    ];
 }
