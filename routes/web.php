@@ -8,7 +8,6 @@ use App\Http\Controllers\formDiagnosaController;
 use App\Http\Controllers\listDiagnosaController;
 use App\Http\Controllers\obatController;
 use App\Http\Controllers\transaksiController;
-use App\Http\Controllers\loginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,8 +32,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/listPasien', [listPasienController::class, 'index']);
     Route::get('/formDiagnosa', [formDiagnosaController::class, 'index'])->name('form.sesi');
     Route::get('/listDiagnosa', [listDiagnosaController::class, 'index']);
-    Route::get('/formObat', [obatController::class, 'index']);
-    Route::get('/resepObat', [obatController::class, 'resep']);
+    Route::get('/formObat', [obatController::class, 'index'])->name('form.obat');
+    Route::get('/resepObat', [obatController::class, 'resep'])->name('form.resep');
     Route::get('/listDokter', [listPasienController::class, 'dokter']);
     Route::get('/Transaksi', [transaksiController::class, 'index']);
     Route::get('/listTransaksi', [transaksiController::class, 'datatransaksi']);
@@ -42,4 +41,6 @@ Route::middleware(['auth'])->group(function () {
     // Post
     Route::post('/formPasien/submit', [formPasienController::class, 'store'])->name('form.submit');
     Route::post('/formDiagnosa/submit', [formDiagnosaController::class, 'store'])->name('form.submit.sesi');
+    Route::post('/formObat/submit', [obatController::class, 'storeObat'])->name('form.submit.obat');
+    Route::post('/formResep/submit', [obatController::class, 'storeResep'])->name('form.submit.resep');
 });
