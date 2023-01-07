@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/formObat', [obatController::class, 'index'])->name('form.obat');
     Route::get('/resepObat', [obatController::class, 'resep'])->name('form.resep');
     Route::get('/listDokter', [listPasienController::class, 'dokter']);
-    Route::get('/Transaksi', [transaksiController::class, 'index']);
+    Route::get('/Transaksi', [transaksiController::class, 'index'])->name('form.transaksi');
     Route::get('/listTransaksi', [transaksiController::class, 'datatransaksi']);
 
     // Post
@@ -43,4 +43,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/formDiagnosa/submit', [formDiagnosaController::class, 'store'])->name('form.submit.sesi');
     Route::post('/formObat/submit', [obatController::class, 'storeObat'])->name('form.submit.obat');
     Route::post('/formResep/submit', [obatController::class, 'storeResep'])->name('form.submit.resep');
+    Route::post('/formTransaksi/submit', [transaksiController::class, 'storeTransaksi'])->name('form.submit.transaksi');
 });

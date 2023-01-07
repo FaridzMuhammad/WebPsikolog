@@ -17,4 +17,14 @@ class ResepObat extends Model
         'id_pasien',
         'keterangan_resep',
     ];
+
+    public function obat()
+    {
+        return $this->belongsTo(Obat::class, 'id_obat', 'id');
+    }
+
+    public function pasien()
+    {
+        return $this->belongsTo(Pasien::class, 'id_pasien', 'id');
+    }
 }

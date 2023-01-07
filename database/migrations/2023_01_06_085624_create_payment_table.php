@@ -20,6 +20,9 @@ return new class extends Migration
             $table->date('tanggal_payment');
             $table->integer('total_harga');
             $table->timestamps();
+
+            $table->foreign('id_resep_obat')->references('id')->on('resep_obat');
+            $table->foreign('id_pasien')->references('id')->on('pasien');
         });
     }
 

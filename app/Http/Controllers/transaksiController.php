@@ -2,11 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pasien;
+use App\Models\Payment;
+use App\Models\ResepObat;
+use Illuminate\Http\Request;
+
 class transaksiController extends Controller
 {
     public function index()
     {
-        return view('Transaksi.Transaksi');
+        $patients = Pasien::all();
+        $resep = ResepObat::all();
+
+        return view('Transaksi.Transaksi', [
+            'patients' => $patients,
+            'resep' => $resep,
+        ]);
+    }
+
+    public function storeTransaksi(Request $request)
+    {
+        $data = $request->all();
+
+        $request->validate([
+            'date' => 'required|date',
+            'total' => 'required|integer',
+        ]);
+
+        Payment::create([
+            'id_resep_obat' => $data['resep'],
+            'id_pasien' => $data['pasien'],
+            'tanggal_payment' => $data['date'],
+            'total_harga' => $data['total'],
+        ]);
+
+        return redirect()->route('form.transaksi')->with('success_message', 'Success!');
     }
 
     public function datatransaksi()
