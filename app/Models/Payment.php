@@ -18,4 +18,14 @@ class Payment extends Model
         'tanggal_payment',
         'total_harga',
     ];
+
+    public function resep()
+    {
+        return $this->belongsTo(ResepObat::class, 'id_resep_obat', 'id');
+    }
+
+    public function pasien()
+    {
+        return $this->belongsTo(Pasien::class, 'id_pasien', 'id');
+    }
 }

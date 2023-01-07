@@ -41,6 +41,10 @@ class transaksiController extends Controller
 
     public function datatransaksi()
     {
-        return view('Transaksi.listTransaksi');
+        $payment = Payment::all();
+
+        return view('Transaksi.listTransaksi', [
+            'payment' => $payment,
+        ]);
     }
 }
