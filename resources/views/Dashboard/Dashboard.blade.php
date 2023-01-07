@@ -10,7 +10,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>{{ $pasien_count }}</h3>
 
                             <p>Total Pasien</p>
                         </div>
@@ -25,7 +25,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+                            <h3>{{ $proses_count }}<sup style="font-size: 20px">%</sup></h3>
 
                             <p>proses penanganan</p>
                         </div>
@@ -40,7 +40,7 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{ $done_count }}</h3>
 
                             <p>Telah selesai</p>
                         </div>
@@ -55,7 +55,7 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>{{ $pending_count }}</h3>
 
                             <p>Menunggu penjadwalan </p>
                         </div>
