@@ -3,6 +3,22 @@
 @section('content')
     <section class="content" style="padding-top: 15px">
         <div class="container-fluid">
+            @if (session('success_message'))
+                <div class="alert alert-success">
+                    {{ session('success_message') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+            @if (session('error_message'))
+                <div class="alert alert-danger">
+                    {{ session('error_message') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -31,11 +47,10 @@
                                             <td>{{ $item->nohp_dokter }}</td>
                                             <td>{{ $item->alamat_dokter }}</td>
                                             <td>
-                                                <a href="" class="btn btn-info">
+                                                <a href="{{ route('edit.dokter', $item->id) }}" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
-                                                <form action="" method="POST"
-                                                    class="d-inline">
+                                                <form action="{{ route('destroy.dokter', $item->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     <button class="btn btn-danger">
                                                         <i class="fa fa-trash"></i>

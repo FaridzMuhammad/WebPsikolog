@@ -72,8 +72,6 @@ class formpasiencontroller extends Controller
             'alamat' => 'required|max:200',
         ]);
 
-        $pasien = Pasien::findOrFail($id);
-
         $pasien->update([
             'nama_pasien' => $data['name'],
             'email_pasien' => $data['email'],
@@ -100,6 +98,56 @@ class formpasiencontroller extends Controller
             $pasien->delete();
 
             return redirect()->route('list.pasien')->with('success_message', 'Delete Success!');
+        }
+    }
+
+    public function editDokter($id)
+    {
+        $dokter = Dokter::findOrFail($id);
+
+        return view('DataPasien.editDokter', [
+            'dokter' => $dokter,
+        ]);
+    }
+
+    public function updateDokter(Request $request, $id)
+    {
+        $data = $request->all();
+        $dokter = Dokter::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|max:100',
+            'email' => 'required|unique:dokter,email_dokter,' . $dokter->id,
+            'nohp' => 'required',
+            'alamat' => 'required|max:200',
+        ]);
+
+        $dokter->update([
+            'nama_dokter' => $data['name'],
+            'email_dokter' => $data['email'],
+            'nohp_dokter' => $data['nohp'],
+            'alamat_dokter' => $data['alamat'],
+        ]);
+
+        return redirect()->route('list.dokter')->with('success_message', 'Update Success!');
+    }
+
+    public function deleteDokter($id)
+    {
+        $dokter = Dokter::findOrFail($id);
+
+        $keyExists = DB::select(
+            DB::raw(
+                'SELECT * FROM sesi WHERE id_dokter='.$dokter['id']
+            )
+        );
+
+        if (count($keyExists) > 0) {
+            return redirect()->route('list.dokter')->with('error_message', 'Dokter ini masih ada dalam sesi!');
+        } else {
+            $dokter->delete();
+
+            return redirect()->route('list.dokter')->with('success_message', 'Delete Success!');
         }
     }
 }
