@@ -20,6 +20,7 @@
                                         <th>Deskripsi</th>
                                         <th>Tanggal Sesi</th>
                                         <th>Keterangan Diagnosa</th>
+                                        <td>Action</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -31,6 +32,17 @@
                                             <td>{{ $item->deskripsi_hasil }}</td>
                                             <td>{{ $item->tanggal_sesi }}</td>
                                             <td>{{ $item->status_sesi }}</td>
+                                            <td>
+                                                <a href="" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <form action="" method="POST" class="d-inline">
+                                                    @csrf
+                                                    <button class="btn btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

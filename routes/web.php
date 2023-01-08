@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
     // Get
     Route::get('/Dashboard', [DashboardController::class, 'index']);
     Route::get('/formPasien', [formPasienController::class, 'index'])->name('form.pasien');
-    Route::get('/listPasien', [listPasienController::class, 'index']);
+    Route::get('/listPasien', [listPasienController::class, 'index'])->name('list.pasien');
     Route::get('/formDiagnosa', [formDiagnosaController::class, 'index'])->name('form.sesi');
     Route::get('/listDiagnosa', [listDiagnosaController::class, 'index']);
     Route::get('/formObat', [obatController::class, 'index'])->name('form.obat');
@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/listDokter', [listPasienController::class, 'dokter']);
     Route::get('/Transaksi', [transaksiController::class, 'index'])->name('form.transaksi');
     Route::get('/listTransaksi', [transaksiController::class, 'datatransaksi']);
+    Route::get('/formPasien/{id}', [formPasienController::class, 'editPasien'])->name('edit.pasien');
 
     // Post
     Route::post('/formPasien/submit', [formPasienController::class, 'store'])->name('form.submit');
@@ -44,4 +45,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/formObat/submit', [obatController::class, 'storeObat'])->name('form.submit.obat');
     Route::post('/formResep/submit', [obatController::class, 'storeResep'])->name('form.submit.resep');
     Route::post('/formTransaksi/submit', [transaksiController::class, 'storeTransaksi'])->name('form.submit.transaksi');
+
+    // Update
+    Route::post('/formPasien/e/{id}', [formPasienController::class, 'updatePasien'])->name('update.pasien');
+
+    // Destroy
+    Route::post('/formPasien/d/{id}', [formPasienController::class, 'deletePasien'])->name('destroy.pasien');
 });

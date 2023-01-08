@@ -19,6 +19,7 @@
                                         <th>Email</th>
                                         <th>Nomer telepon</th>
                                         <th>Alamat</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -29,6 +30,18 @@
                                             <td>{{ $item->email_dokter }}</td>
                                             <td>{{ $item->nohp_dokter }}</td>
                                             <td>{{ $item->alamat_dokter }}</td>
+                                            <td>
+                                                <a href="" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <form action="" method="POST"
+                                                    class="d-inline">
+                                                    @csrf
+                                                    <button class="btn btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

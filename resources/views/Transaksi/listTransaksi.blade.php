@@ -19,6 +19,7 @@
                                         <th>Nama Pasien</th>
                                         <th>Tanggal Payment</th>
                                         <th>Total Harga</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -29,6 +30,18 @@
                                             <td>{{ $item->resep->pasien->nama_pasien }}</td>
                                             <td>{{ $item->tanggal_payment }}</td>
                                             <td>{{ $item->total_harga }}</td>
+                                            <td>
+                                                <a href="" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <form action="" method="POST"
+                                                    class="d-inline">
+                                                    @csrf
+                                                    <button class="btn btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
