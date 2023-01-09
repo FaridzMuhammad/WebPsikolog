@@ -31,14 +31,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/formPasien', [formPasienController::class, 'index'])->name('form.pasien');
     Route::get('/listPasien', [listPasienController::class, 'index'])->name('list.pasien');
     Route::get('/formDiagnosa', [formDiagnosaController::class, 'index'])->name('form.sesi');
-    Route::get('/listDiagnosa', [listDiagnosaController::class, 'index']);
+    Route::get('/listDiagnosa', [listDiagnosaController::class, 'index'])->name('list.sesi');
     Route::get('/formObat', [obatController::class, 'index'])->name('form.obat');
     Route::get('/resepObat', [obatController::class, 'resep'])->name('form.resep');
     Route::get('/listDokter', [listPasienController::class, 'dokter'])->name('list.dokter');
     Route::get('/Transaksi', [transaksiController::class, 'index'])->name('form.transaksi');
-    Route::get('/listTransaksi', [transaksiController::class, 'datatransaksi']);
+    Route::get('/listTransaksi', [transaksiController::class, 'datatransaksi'])->name('list.transaksi');
     Route::get('/formPasien/{id}', [formPasienController::class, 'editPasien'])->name('edit.pasien');
     Route::get('/formDokter/{id}', [formPasienController::class, 'editDokter'])->name('edit.dokter');
+    Route::get('/formDiagnosa/{id}', [formDiagnosaController::class, 'editSesi'])->name('edit.sesi');
 
     // Post
     Route::post('/formPasien/submit', [formPasienController::class, 'store'])->name('form.submit');
@@ -50,8 +51,10 @@ Route::middleware(['auth'])->group(function () {
     // Update
     Route::post('/formPasien/e/{id}', [formPasienController::class, 'updatePasien'])->name('update.pasien');
     Route::post('/formDokter/e/{id}', [formPasienController::class, 'updateDokter'])->name('update.dokter');
+    Route::post('/formDiagnosa/e/{id}', [formDiagnosaController::class, 'updateSesi'])->name('update.sesi');
 
     // Destroy
     Route::post('/formPasien/d/{id}', [formPasienController::class, 'deletePasien'])->name('destroy.pasien');
     Route::post('/formDokter/d/{id}', [formPasienController::class, 'deleteDokter'])->name('destroy.dokter');
+    Route::post('/formDiagnosa/d/{id}', [formDiagnosaController::class, 'deleteSesi'])->name('destroy.sesi');
 });

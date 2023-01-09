@@ -3,6 +3,26 @@
 @section('content')
     <section class="content" style="padding-top: 15px">
         <div class="container-fluid">
+
+            @if (session('success_message'))
+                <div class="alert alert-success">
+                    {{ session('success_message') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -17,9 +37,9 @@
                                         <th>No</th>
                                         <th>Nama Pasien</th>
                                         <th>Nama Dokter</th>
-                                        <th>Deskripsi</th>
+                                        <th>Deskripsi Diagnosa</th>
                                         <th>Tanggal Sesi</th>
-                                        <th>Keterangan Diagnosa</th>
+                                        <th>Status</th>
                                         <td>Action</td>
                                     </tr>
                                 </thead>
@@ -31,12 +51,26 @@
                                             <td>{{ $item->dokter->nama_dokter }}</td>
                                             <td>{{ $item->deskripsi_hasil }}</td>
                                             <td>{{ $item->tanggal_sesi }}</td>
-                                            <td>{{ $item->status_sesi }}</td>
                                             <td>
-                                                <a href="" class="btn btn-info">
+                                                @if ($item->status_sesi == 'Approved')
+                                                    <small class="badge badge-success">
+                                                        {{ $item->status_sesi }}
+                                                    </small>
+                                                @elseif($item->status_sesi == 'On Progress')
+                                                    <small class="badge badge-primary">
+                                                        {{ $item->status_sesi }}
+                                                    </small>
+                                                @else
+                                                    <small class="badge badge-warning">
+                                                        {{ $item->status_sesi }}
+                                                    </small>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('edit.sesi', $item->id) }}" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
-                                                <form action="" method="POST" class="d-inline">
+                                                <form action="{{ route('destroy.sesi', $item->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     <button class="btn btn-danger">
                                                         <i class="fa fa-trash"></i>
