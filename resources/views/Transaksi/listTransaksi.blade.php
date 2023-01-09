@@ -40,7 +40,7 @@
                                             </td>
                                             <td>{{ $item->resep->pasien->nama_pasien }}</td>
                                             <td>{{ $item->tanggal_payment }}</td>
-                                            <td>{{ $item->total_harga }}</td>
+                                            <td>@currency($item->total_harga)</td>
                                             <td>
                                                 <a href="{{ route('edit.transaksi', $item->id) }}" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
