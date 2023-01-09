@@ -2,15 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dokter;
+use App\Models\Pasien;
+
 class listpasiencontroller extends Controller
 {
     public function index()
     {
-        return view('DataPasien.listPasien');
+        $data = Pasien::all();
+
+        return view('DataPasien.listPasien', [
+            'data' => $data
+        ]);
     }
 
     public function dokter()
     {
-        return view('DataPasien.listDokter');
+        $data = Dokter::all();
+
+        return view('DataPasien.listDokter', [
+            'data' => $data,
+        ]);
     }
 }

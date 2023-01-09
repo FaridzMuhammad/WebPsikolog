@@ -3,46 +3,52 @@
 @section('content')
     <section class="content" style="padding-top: 20px">
         <div class="container-fluid">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Quick Example</h3>
+                    <h3 class="card-title">Formulir Diagnosa</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form>
-
+                <form action="{{ route('form.submit.sesi') }}" method="POST">
+                    @csrf
                     <div class="card-body">
-
                         <div class="form-group" data-select2-id="29">
-                            <label>Nama Pasien</label>
-                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
-                                data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                <option selected="selected" data-select2-id="3">Alabama</option>
-                                <option data-select2-id="34">Alaska</option>
-                                <option data-select2-id="35">California</option>
-                                <option data-select2-id="36">Delaware</option>
-                                <option data-select2-id="37">Tennessee</option>
-                                <option data-select2-id="38">Texas</option>
-                                <option data-select2-id="39">Washington</option>
+                            <label>Pasien</label>
+                            <select name="pasien" class="form-control select2 select2-hidden-accessible"
+                                style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                @foreach ($patients as $patient)
+                                    <option value="{{ $patient->id }}">{{ $patient->nama_pasien }}</option>
+                                @endforeach
                             </select>
                         </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Dokter</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Sesi</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <div class="form-group" data-select2-id="29">
+                            <label>Dokter</label>
+                            <select name="dokter" class="form-control select2 select2-hidden-accessible"
+                                style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                @foreach ($doctors as $doctor)
+                                    <option value="{{ $doctor->id }}">{{ $doctor->nama_dokter }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tanggal</label>
-                            <input type="date" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input name="date" type="date" class="form-control" id="exampleInputPassword1"
+                                placeholder="Password" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Deskripsi</label>
-                            <textarea class="form-control" rows="3" placeholder="Masukan Alamat"></textarea>
+                            <textarea name="description" class="form-control" rows="3" placeholder="Deskripsi sesi...." required></textarea>
                         </div>
 
                     </div>
