@@ -19,11 +19,14 @@ class DashboardController extends Controller
 
         $proses = ($done / $sesi) * 100;
 
+        $data = Sesi::all();
+
         return view('Dashboard.Dashboard', [
             'pasien_count' => $pasien,
             'proses_count' => $proses,
             'done_count' => $done,
             'pending_count' => $pending,
+            'data' => $data,
         ]);
     }
 }
