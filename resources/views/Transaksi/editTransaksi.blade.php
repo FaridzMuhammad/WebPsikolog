@@ -23,11 +23,11 @@
             @endif
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Formulir Transaksi</h3>
+                    <h3 class="card-title">Edit Transaksi</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ route('form.submit.transaksi') }}" method="POST">
+                <form action="{{ route('update.transaksi', $payment->id) }}" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="form-group" data-select2-id="29">
@@ -35,7 +35,8 @@
                             <select name="pasien" class="form-control select2 select2-hidden-accessible"
                                 style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                 @foreach ($patients as $patient)
-                                    <option value="{{ $patient->id }}">{{ $patient->nama_pasien }}</option>
+                                    <option {{ $payment->id_pasien == $patient->id ? 'selected' : '' }}
+                                        value="{{ $patient->id }}">{{ $patient->nama_pasien }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -44,23 +45,24 @@
                             <select name="resep" class="form-control select2 select2-hidden-accessible"
                                 style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                 @foreach ($resep as $item)
-                                    <option value="{{ $item->id }}">{{ $item->obat->nama_obat }} -
+                                    <option {{ $payment->id_resep_obat == $item->id ? 'selected' : '' }}
+                                        value="{{ $item->id }}">{{ $item->obat->nama_obat }} -
                                         {{ $item->pasien->nama_pasien }} ({{ $item->keterangan_resep }})</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tanggal</label>
-                            <input name="date" type="date" class="form-control" id="exampleInputPassword1"
+                            <input value="{{ $payment->tanggal_payment }}" name="date" type="date" class="form-control" id="exampleInputPassword1"
                                 placeholder="Password">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Total Harga</label>
-                            <input name="total" type="number" class="form-control" id="exampleInputPassword1"
+                            <input value="{{ $payment->total_harga }}" name="total" type="number" class="form-control" id="exampleInputPassword1"
                                 placeholder="Total Harga">
                         </div>
                         <!-- /.card-body -->
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
         </div>

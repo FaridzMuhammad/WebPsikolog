@@ -3,6 +3,16 @@
 @section('content')
     <section class="content" style="padding-top: 15px">
         <div class="container-fluid">
+
+            @if (session('success_message'))
+                <div class="alert alert-success">
+                    {{ session('success_message') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -26,16 +36,16 @@
                                     @foreach ($payment as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->resep->obat->nama_obat }} - {{ $item->resep->keterangan_resep }}</td>
+                                            <td>{{ $item->resep->obat->nama_obat }} - {{ $item->resep->keterangan_resep }}
+                                            </td>
                                             <td>{{ $item->resep->pasien->nama_pasien }}</td>
                                             <td>{{ $item->tanggal_payment }}</td>
                                             <td>{{ $item->total_harga }}</td>
                                             <td>
-                                                <a href="" class="btn btn-info">
+                                                <a href="{{ route('edit.transaksi', $item->id) }}" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
-                                                <form action="" method="POST"
-                                                    class="d-inline">
+                                                <form action="{{ route('destroy.transaksi', $item->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     <button class="btn btn-danger">
                                                         <i class="fa fa-trash"></i>
