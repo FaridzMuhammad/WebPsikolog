@@ -17,7 +17,11 @@ class DashboardController extends Controller
 
         $sesi = Sesi::get()->count();
 
-        $proses = ($done / $sesi) * 100;
+        if ($sesi == 0) {
+            $proses = 0;
+        } else {
+            $proses = ($done / $sesi) * 100;
+        }
 
         $data = Sesi::all();
 
