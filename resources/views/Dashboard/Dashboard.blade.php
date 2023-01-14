@@ -1,7 +1,7 @@
 @extends('layouts.Sidebar')
 
 @section('content')
-    <h1>Dashboard</h1>
+    <h1 style="font-family: system-ui; padding-left: 15px">Dashboard</h1>
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
@@ -17,7 +17,6 @@
                         <div class="icon">
                             <i class="fa-solid fa-user-group" style="font-size: 80px"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -32,7 +31,6 @@
                         <div class="icon">
                             <i class="fa-solid fa-user-doctor" style="font-size: 80px"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -47,7 +45,6 @@
                         <div class="icon">
                             <i class="fa-solid fa-user-check" style="font-size: 80px"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -62,7 +59,6 @@
                         <div class="icon">
                             <i class="fa-solid fa-user-clock" style="font-size: 80px"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>

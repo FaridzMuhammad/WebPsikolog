@@ -67,9 +67,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="{{ asset('AdminLTE/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+            <a href="/" class="brand-link">
+                <img src="{{ asset('AdminLTE/dist/img/logoPsikolog.png') }}" alt="AdminLTE Logo"
+                    style="float: left;
+                     line-height: .8;
+                     margin-left: -0.5rem;
+                     margin-right: -0.5rem;
+                     margin-top: -10px;
+                     max-height: 50px;
+                     width: auto;">
                 <span class="brand-text font-weight-light">Psikologi</span>
             </a>
 
@@ -81,25 +87,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a href="/Dashboard" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
+                        <li class="nav-item">
+                            <a href="/Dashboard" class="nav-link">
+                                <i class="fa-solid fa-house-user" style="padding-left: 5px"></i>
+                                <p style="padding-left:5px">
                                     Home
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item menu-is-opening menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-table" style="padding-left: 5px"></i>
+                                <p style="padding-left: 8px">
                                     Data
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: block;">
+                            <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="/formPasien" class="nav-link active">
+                                    <a href="/formPasien" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Formulir data</p>
                                     </a>
@@ -118,17 +124,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item menu-is-opening menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa-regular fa-calendar-check" style="padding-left: 5px"></i>
+                                <p style="padding-left: 11px">
                                     Sesi
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: block;">
+                            <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="/formDiagnosa" class="nav-link active">
+                                    <a href="/formDiagnosa" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Formulir sesi</p>
                                     </a>
@@ -141,17 +147,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item menu-is-opening menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-capsules" style="padding-left: 5px"></i>
+                                <p style="padding-left: 8px">
                                     Farmasi
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: block;">
+                            <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="/formObat" class="nav-link active">
+                                    <a href="/formObat" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Formulir Obat</p>
                                     </a>
@@ -164,17 +170,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item menu-is-opening menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa-solid fa-money-bill-transfer" style="padding-left: 5px"></i>
+                                <p style="padding-left: 8px">
                                     Transaksi
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display: block;">
+                            <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="/Transaksi" class="nav-link active">
+                                    <a href="/Transaksi" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Data Transaksi</p>
                                     </a>
@@ -216,11 +222,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <footer class="main-footer">
             <!-- To the right -->
             <div class="float-right d-none d-sm-inline">
-                Anything you want
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
+            <strong>Admin Psikolog</strong>
         </footer>
     </div>
     <!-- ./wrapper -->
@@ -243,7 +247,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Bootstrap 4 -->
     <script src="{{ asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
- 
+
     <!-- AdminLTE App -->
     <script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
