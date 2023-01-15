@@ -36,7 +36,7 @@
                                 style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                 @foreach ($patients as $patient)
                                     <option {{ $payment->id_pasien == $patient->id ? 'selected' : '' }}
-                                        value="{{ $patient->id }}">{{ $patient->nama_pasien }}</option>
+                                        value="{{ $patient->id }}">{{ $patient->pasien->nama_pasien }}</option>
                                 @endforeach
                             </select>
                         </div>

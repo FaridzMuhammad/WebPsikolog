@@ -26,6 +26,6 @@ class Payment extends Model
 
     public function pasien()
     {
-        return $this->belongsTo(Pasien::class, 'id_pasien', 'id');
+        return $this->belongsTo(Sesi::class, 'id_pasien', 'id_pasien');
     }
 }

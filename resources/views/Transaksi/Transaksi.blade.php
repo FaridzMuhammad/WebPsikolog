@@ -35,7 +35,7 @@
                             <select name="pasien" class="form-control select2 select2-hidden-accessible"
                                 style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                 @foreach ($patients as $patient)
-                                    <option value="{{ $patient->id }}">{{ $patient->nama_pasien }}</option>
+                                    <option value="{{ $patient->id }}">{{ $patient->pasien->nama_pasien }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -3,7 +3,6 @@
 @section('content')
     <section class="content" style="padding-top: 15px">
         <div class="container-fluid">
-
             @if (session('success_message'))
                 <div class="alert alert-success">
                     {{ session('success_message') }}
@@ -12,12 +11,19 @@
                     </button>
                 </div>
             @endif
-
+            @if (session('error_message'))
+                <div class="alert alert-danger">
+                    {{ session('error_message') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header bg-info">
-                            <h3 class="card-title">List Transaksi</h3>
+                            <h3 class="card-title">List Resep Obat</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -25,27 +31,24 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Resep Obat</th>
+                                        <th>Nama Obat</th>
                                         <th>Nama Pasien</th>
-                                        <th>Tanggal Payment</th>
-                                        <th>Total Harga</th>
+                                        <th>Keterangan Resep</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($payment as $item)
+                                    @foreach ($data as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->resep->obat->nama_obat }} - {{ $item->resep->keterangan_resep }}
-                                            </td>
+                                            <td>{{ $item->obat->nama_obat }}</td>
                                             <td>{{ $item->pasien->pasien->nama_pasien }}</td>
-                                            <td>{{ $item->tanggal_payment }}</td>
-                                            <td>@currency($item->total_harga)</td>
+                                            <td>{{ $item->keterangan_resep }}</td>
                                             <td>
-                                                <a href="{{ route('edit.transaksi', $item->id) }}" class="btn btn-info">
+                                                <a href="{{ route('resep.edit', $item->id) }}" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
-                                                <form action="{{ route('destroy.transaksi', $item->id) }}" method="POST" class="d-inline">
+                                                <form action="{{ route('destroy.resep', $item->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     <button class="btn btn-danger">
                                                         <i class="fa fa-trash"></i>
