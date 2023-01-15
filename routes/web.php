@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/formDokter/{id}', [formPasienController::class, 'editDokter'])->name('edit.dokter');
     Route::get('/formDiagnosa/{id}', [formDiagnosaController::class, 'editSesi'])->name('edit.sesi');
     Route::get('/formTransaksi/{id}', [transaksiController::class, 'editTransaksi'])->name('edit.transaksi');
+    Route::get('/listObat', [obatController::class, 'listObat'])->name('obat.list');
 
     // Post
     Route::post('/formPasien/submit', [formPasienController::class, 'store'])->name('form.submit');

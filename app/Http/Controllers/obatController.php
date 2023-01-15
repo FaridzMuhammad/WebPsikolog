@@ -14,6 +14,15 @@ class obatcontroller extends Controller
         return view('dataObat.Obat');
     }
 
+    public function listObat()
+    {
+        $data = Obat::all();
+
+        return view('dataObat.listObat', [
+            'data' => $data,
+        ]); 
+    }
+
     public function storeObat(Request $request)
     {
         $data = $request->all();
