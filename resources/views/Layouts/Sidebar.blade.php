@@ -174,6 +174,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>Resep Obat</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="/listObat" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Resep Obat</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">

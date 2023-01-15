@@ -6,6 +6,7 @@ use App\Models\Obat;
 use App\Models\Pasien;
 use App\Models\ResepObat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class obatcontroller extends Controller
 {
@@ -23,6 +24,53 @@ class obatcontroller extends Controller
         ]); 
     }
 
+    public function editObat($id)
+    {
+        $obat = Obat::findOrfail($id);
+
+        return view('dataObat.editObat', [
+            'obat' => $obat,
+        ]);
+    }
+
+    public function updateObat(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'price' => 'required|integer',
+        ]);
+
+        $obat = Obat::findOrfail($id);
+
+        $obat->update([
+            'nama_obat' => $data['name'],
+            'harga' => $data['price'],
+        ]);
+
+        return redirect()->route('obat.list')->with('success_message', 'Update Success!');
+    }
+
+    public function deleteObat($id)
+    {
+        $obat = Obat::findOrfail($id);
+
+        $keyExists = DB::select(
+            DB::raw(
+                'SELECT * FROM resep_obat WHERE id_obat='.$obat['id']
+            )
+        );
+
+        if (count($keyExists) > 0) {
+            return redirect()->route('obat.list')->with('error_message', 'Obat ini masih ada dalam Resep Obat!');
+        } else {
+            $obat->delete();
+
+            return redirect()->route('obat.list')->with('success_message', 'Delete Success!');
+        }
+    }
+
     public function storeObat(Request $request)
     {
         $data = $request->all();
@@ -37,7 +85,7 @@ class obatcontroller extends Controller
             'harga' => $data['price'],
         ]);
 
-        return redirect()->route('form.obat')->with('success_message', 'Success!');
+        return redirect()->route('obat.list')->with('success_message', 'Success!');
     }
 
     public function resep()
@@ -48,6 +96,15 @@ class obatcontroller extends Controller
         return view('dataObat.resepObat', [
             'meds' => $meds,
             'patients' => $patients,
+        ]);
+    }
+
+    public function resepList()
+    {
+        $data = ResepObat::all();
+
+        return view('dataObat.listResepObat', [
+            'data' => $data,
         ]);
     }
 

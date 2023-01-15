@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/formDiagnosa/{id}', [formDiagnosaController::class, 'editSesi'])->name('edit.sesi');
     Route::get('/formTransaksi/{id}', [transaksiController::class, 'editTransaksi'])->name('edit.transaksi');
     Route::get('/listObat', [obatController::class, 'listObat'])->name('obat.list');
+    Route::get('/editObat/{id}', [obatController::class, 'editObat'])->name('obat.edit');
 
     // Post
     Route::post('/formPasien/submit', [formPasienController::class, 'store'])->name('form.submit');
@@ -55,10 +56,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/formDokter/e/{id}', [formPasienController::class, 'updateDokter'])->name('update.dokter');
     Route::post('/formDiagnosa/e/{id}', [formDiagnosaController::class, 'updateSesi'])->name('update.sesi');
     Route::post('/formTransaksi/e/{id}', [transaksiController::class, 'updateTransaksi'])->name('update.transaksi');
+    Route::post('/editObat/{id}', [obatController::class, 'updateObat'])->name('obat.update');
 
     // Destroy
     Route::post('/formPasien/d/{id}', [formPasienController::class, 'deletePasien'])->name('destroy.pasien');
     Route::post('/formDokter/d/{id}', [formPasienController::class, 'deleteDokter'])->name('destroy.dokter');
     Route::post('/formDiagnosa/d/{id}', [formDiagnosaController::class, 'deleteSesi'])->name('destroy.sesi');
-    Route::post('/formTransaksi/d/{d}', [transaksiController::class, 'deleteTransaksi'])->name('destroy.transaksi');
+    Route::post('/formTransaksi/d/{id}', [transaksiController::class, 'deleteTransaksi'])->name('destroy.transaksi');
+    Route::post('/deleteObat/{id}', [obatController::class, 'deleteObat'])->name('destroy.obat');
 });
