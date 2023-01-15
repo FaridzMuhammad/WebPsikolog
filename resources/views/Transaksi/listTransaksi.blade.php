@@ -38,7 +38,7 @@
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->resep->obat->nama_obat }} - {{ $item->resep->keterangan_resep }}
                                             </td>
-                                            <td>{{ $item->resep->pasien->nama_pasien }}</td>
+                                            <td>{{ $item->pasien->pasien->nama_pasien }}</td>
                                             <td>{{ $item->tanggal_payment }}</td>
                                             <td>@currency($item->total_harga)</td>
                                             <td>

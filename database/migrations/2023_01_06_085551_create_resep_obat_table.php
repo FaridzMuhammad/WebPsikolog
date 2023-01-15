@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('id_obat')->references('id')->on('obat');
-            $table->foreign('id_pasien')->references('id')->on('pasien');
+            $table->foreign('id_pasien')->references('id')->on('sesi');
         });
     }
 

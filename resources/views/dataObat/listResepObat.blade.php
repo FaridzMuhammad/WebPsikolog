@@ -42,7 +42,7 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->obat->nama_obat }}</td>
-                                            <td>{{ $item->pasien->nama_pasien }}</td>
+                                            <td>{{ $item->pasien->pasien->nama_pasien }}</td>
                                             <td>{{ $item->keterangan_resep }}</td>
                                             <td>
                                                 <a href="{{ route('resep.edit', $item->id) }}" class="btn btn-info">

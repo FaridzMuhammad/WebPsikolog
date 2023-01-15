@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Obat;
 use App\Models\Pasien;
 use App\Models\ResepObat;
+use App\Models\Sesi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -91,7 +92,7 @@ class obatcontroller extends Controller
     public function resep()
     {
         $meds = Obat::all();
-        $patients = Pasien::all();
+        $patients = Sesi::all();
 
         return view('dataObat.resepObat', [
             'meds' => $meds,
@@ -128,7 +129,7 @@ class obatcontroller extends Controller
     public function editResep($id)
     {
         $meds = Obat::all();
-        $patients = Pasien::all();
+        $patients = Sesi::all();
 
         $resep = ResepObat::findOrFail($id);
 

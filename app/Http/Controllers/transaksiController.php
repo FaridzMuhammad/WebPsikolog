@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Pasien;
 use App\Models\Payment;
 use App\Models\ResepObat;
+use App\Models\Sesi;
 use Illuminate\Http\Request;
 
 class transaksiController extends Controller
 {
     public function index()
     {
-        $patients = Pasien::all();
+        $patients = Sesi::all();
         $resep = ResepObat::all();
 
         return view('Transaksi.Transaksi', [
@@ -50,7 +51,7 @@ class transaksiController extends Controller
 
     public function editTransaksi($id)
     {
-        $patients = Pasien::all();
+        $patients = Sesi::all();
         $resep = ResepObat::all();
         $payment = Payment::findOrFail($id);
 
