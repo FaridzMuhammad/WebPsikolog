@@ -23,7 +23,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header bg-info">
-                            <h3 class="card-title">List Pasien</h3>
+                            <h3 class="card-title">List Resep Obat</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -31,8 +31,9 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Harga</th>
+                                        <th>Nama Obat</th>
+                                        <th>Nama Pasien</th>
+                                        <th>Keterangan Resep</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -40,13 +41,14 @@
                                     @foreach ($data as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->nama_obat }}</td>
-                                            <td>{{ $item->harga }}</td>
+                                            <td>{{ $item->obat->nama_obat }}</td>
+                                            <td>{{ $item->pasien->nama_pasien }}</td>
+                                            <td>{{ $item->keterangan_resep }}</td>
                                             <td>
-                                                <a href="{{ route('obat.edit', $item->id) }}" class="btn btn-info">
+                                                <a href="{{ route('resep.edit', $item->id) }}" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
-                                                <form action="{{ route('destroy.obat', $item->id) }}" method="POST" class="d-inline">
+                                                <form action="{{ route('destroy.resep', $item->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     <button class="btn btn-danger">
                                                         <i class="fa fa-trash"></i>

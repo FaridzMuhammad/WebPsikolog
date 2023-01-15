@@ -122,7 +122,58 @@ class obatcontroller extends Controller
             'keterangan_resep' => $data['keterangan'],
         ]);
 
-        return redirect()->route('form.resep')->with('success_message', 'Success!');
+        return redirect()->route('resep.list')->with('success_message', 'Success!');
+    }
+
+    public function editResep($id)
+    {
+        $meds = Obat::all();
+        $patients = Pasien::all();
+
+        $resep = ResepObat::findOrFail($id);
+
+        return view('dataObat.editResepObat', [
+            'meds' => $meds,
+            'patients' => $patients,
+            'resep' => $resep,
+        ]);
+    }
+
+    public function updateResep(Request $request, $id)
+    {
+        $data = $request->all();
+        $resep = ResepObat::findOrFail($id);
+
+        $request->validate([
+            'keterangan' => 'required|max:500'
+        ]);
+
+        $resep->update([
+            'id_obat' => $data['obat'],
+            'id_pasien' => $data['pasien'],
+            'keterangan_resep' => $data['keterangan'],
+        ]);
+
+        return redirect()->route('resep.list')->with('success_message', 'Success!');
+    }
+
+    public function deleteResep($id)
+    {
+        $resep = ResepObat::findOrFail($id);
+
+        $keyExists = DB::select(
+            DB::raw(
+                'SELECT * FROM payment WHERE id_resep_obat='.$resep['id']
+            )
+        );
+
+        if (count($keyExists) > 0) {
+            return redirect()->route('resep.list')->with('error_message', 'Obat ini masih ada dalam Resep Obat!');
+        } else {
+            $resep->delete();
+
+            return redirect()->route('resep.list')->with('success_message', 'Delete Success!');
+        }
     }
 }
 
