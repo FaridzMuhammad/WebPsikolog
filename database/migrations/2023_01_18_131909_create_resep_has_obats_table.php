@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('resep_obat', function (Blueprint $table) {
+        Schema::create('resep_has_obat', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pasien');
-            $table->longText('keterangan_resep');
+            $table->unsignedBigInteger('id_resep_obat');
+            $table->unsignedBigInteger('id_obat');
             $table->timestamps();
 
-            $table->foreign('id_pasien')->references('id')->on('sesi');
+            $table->foreign('id_resep_obat')->references('id')->on('resep_obat');
+            $table->foreign('id_obat')->references('id')->on('obat');
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resep_obat');
+        Schema::dropIfExists('resep_has_obats');
     }
 };

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use App\Models\Payment;
+use App\Models\ResepHasObat;
 use App\Models\ResepObat;
 use App\Models\Sesi;
 use Illuminate\Http\Request;
@@ -14,10 +15,12 @@ class transaksiController extends Controller
     {
         $patients = Sesi::all();
         $resep = ResepObat::all();
+        $obat = ResepHasObat::all();
 
         return view('Transaksi.Transaksi', [
             'patients' => $patients,
             'resep' => $resep,
+            'obat' => $obat,
         ]);
     }
 
@@ -43,9 +46,11 @@ class transaksiController extends Controller
     public function datatransaksi()
     {
         $payment = Payment::all();
+        $obat = ResepHasObat::all();
 
         return view('Transaksi.listTransaksi', [
             'payment' => $payment,
+            'obat' => $obat,
         ]);
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Obat;
 use App\Models\Pasien;
+use App\Models\ResepHasObat;
 use App\Models\ResepObat;
 use App\Models\Sesi;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class obatcontroller extends Controller
 
         return view('dataObat.listObat', [
             'data' => $data,
-        ]); 
+        ]);
     }
 
     public function editObat($id)
@@ -59,7 +60,7 @@ class obatcontroller extends Controller
 
         $keyExists = DB::select(
             DB::raw(
-                'SELECT * FROM resep_obat WHERE id_obat='.$obat['id']
+                'SELECT * FROM resep_obat WHERE id_obat=' . $obat['id']
             )
         );
 
@@ -104,24 +105,36 @@ class obatcontroller extends Controller
     {
         $data = ResepObat::all();
 
+        $obat = ResepHasObat::all();
+
         return view('dataObat.listResepObat', [
             'data' => $data,
+            'obat' => $obat,
         ]);
     }
 
     public function storeResep(Request $request)
     {
         $data = $request->all();
+        $meds = $request->input('obat');
+        $date = date('Y-m-d H:i:s');
 
         $request->validate([
             'keterangan' => 'required|max:500'
         ]);
 
-        ResepObat::create([
-            'id_obat' => $data['obat'],
+        $resep = ResepObat::create([
             'id_pasien' => $data['pasien'],
             'keterangan_resep' => $data['keterangan'],
         ]);
+
+        foreach ($meds as $obat) {
+            DB::insert("
+                INSERT INTO resep_has_obat
+                (id_resep_obat, id_obat, created_at, updated_at) 
+                VALUES (?, ?, ?, ?)  
+            ", [$resep->id, $obat, $date, $date]);
+        }
 
         return redirect()->route('resep.list')->with('success_message', 'Success!');
     }
@@ -143,17 +156,34 @@ class obatcontroller extends Controller
     public function updateResep(Request $request, $id)
     {
         $data = $request->all();
+        $meds = $request->input('obat');
         $resep = ResepObat::findOrFail($id);
+        $date = date('Y-m-d H:i:s');
 
         $request->validate([
             'keterangan' => 'required|max:500'
         ]);
 
         $resep->update([
-            'id_obat' => $data['obat'],
             'id_pasien' => $data['pasien'],
             'keterangan_resep' => $data['keterangan'],
         ]);
+
+        if ($meds != NULL) {
+            DB::delete("
+                DELETE FROM resep_has_obat
+                WHERE 
+                id_resep_obat = ? 
+            ", [$id]);
+
+            foreach ($meds as $obat) {
+                DB::insert("
+                    INSERT INTO resep_has_obat
+                    (id_resep_obat, id_obat, created_at, updated_at) 
+                    VALUES (?, ?, ?, ?)  
+                ", [$resep->id, $obat, $date, $date]);
+            }
+        }
 
         return redirect()->route('resep.list')->with('success_message', 'Success!');
     }
@@ -164,17 +194,23 @@ class obatcontroller extends Controller
 
         $keyExists = DB::select(
             DB::raw(
-                'SELECT * FROM payment WHERE id_resep_obat='.$resep['id']
+                'SELECT * FROM payment WHERE id_resep_obat=' . $resep['id']
             )
         );
 
         if (count($keyExists) > 0) {
             return redirect()->route('resep.list')->with('error_message', 'Obat ini masih ada dalam Resep Obat!');
         } else {
+            
+            DB::delete("
+                DELETE FROM resep_has_obat
+                WHERE 
+                id_resep_obat = ? 
+            ", [$id]);
+
             $resep->delete();
 
             return redirect()->route('resep.list')->with('success_message', 'Delete Success!');
         }
     }
 }
-

@@ -32,20 +32,23 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group" data-select2-id="29">
-                            <label>Obat</label>
-                            <select name="obat" class="form-control select2 select2-hidden-accessible"
-                                style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                @foreach ($meds as $item)
-                                    <option {{ $resep->id_obat == $item->id ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->nama_obat }}</option>
-                                @endforeach
-                            </select>
+                            <label>Obat(Biarkan jika tidak ingin di update)</label>
+                            <div class="select2-blue">
+                                <select class="select2" name="obat[]" multiple="multiple" data-placeholder="Pilih Obat"
+                                    data-dropdown-css-class="select2-blue" style="width: 100%;">
+                                    @foreach ($meds as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama_obat }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group" data-select2-id="29">
                             <label>Pasien</label>
-                            <select name="pasien" class="form-control select2 select2-hidden-accessible"
+                            <select name="pasien" class="form-control select"
                                 style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                 @foreach ($patients as $item)
-                                    <option {{ $resep->id_pasien == $item->id ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->pasien->nama_pasien }}</option>
+                                    <option {{ $resep->id_pasien == $item->id ? 'selected' : '' }}
+                                        value="{{ $item->id }}">{{ $item->pasien->nama_pasien }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -61,5 +64,18 @@
             </div>
         </div>
     </section>
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+
+    <!-- Select2 -->
+    <script src="{{ asset('AdminLTE/plugins/select2/js/select2.full.min.js') }}"></script>
+
+    <script>
+        $(function() {
+            $('.select2').select2()
+        })
+    </script>
 
 @endsection

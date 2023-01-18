@@ -41,7 +41,7 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->nama_obat }}</td>
-                                            <td>{{ $item->harga }}</td>
+                                            <td>@currency($item->harga)</td>
                                             <td>
                                                 <a href="{{ route('obat.edit', $item->id) }}" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
