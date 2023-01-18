@@ -36,7 +36,15 @@
                                     @foreach ($payment as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->resep->obat->nama_obat }} - {{ $item->resep->keterangan_resep }}
+                                            <td>
+                                                @foreach ($obat as $meds)
+                                                    @if ($meds->id_resep_obat == $item->resep->id)
+                                                        <small class="badge badge-primary">
+                                                            {{ $meds->obat->nama_obat }}
+                                                        </small>
+                                                    @endif
+                                                @endforeach
+                                                | Tanggal Sesi: {{ $item->resep->pasien->tanggal_sesi }}
                                             </td>
                                             <td>{{ $item->pasien->pasien->nama_pasien }}</td>
                                             <td>{{ $item->tanggal_payment }}</td>
@@ -45,7 +53,8 @@
                                                 <a href="{{ route('edit.transaksi', $item->id) }}" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
-                                                <form action="{{ route('destroy.transaksi', $item->id) }}" method="POST" class="d-inline">
+                                                <form action="{{ route('destroy.transaksi', $item->id) }}" method="POST"
+                                                    class="d-inline">
                                                     @csrf
                                                     <button class="btn btn-danger">
                                                         <i class="fa fa-trash"></i>

@@ -41,14 +41,23 @@
                                     @foreach ($data as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->obat->nama_obat }}</td>
+                                            <td>
+                                                @foreach ($obat as $meds)
+                                                    @if ($meds->id_resep_obat == $item->id)
+                                                        <small class="badge badge-primary">
+                                                            {{ $meds->obat->nama_obat }}
+                                                        </small>
+                                                    @endif
+                                                @endforeach
+                                            </td>
                                             <td>{{ $item->pasien->pasien->nama_pasien }}</td>
                                             <td>{{ $item->keterangan_resep }}</td>
                                             <td>
                                                 <a href="{{ route('resep.edit', $item->id) }}" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
-                                                <form action="{{ route('destroy.resep', $item->id) }}" method="POST" class="d-inline">
+                                                <form action="{{ route('destroy.resep', $item->id) }}" method="POST"
+                                                    class="d-inline">
                                                     @csrf
                                                     <button class="btn btn-danger">
                                                         <i class="fa fa-trash"></i>

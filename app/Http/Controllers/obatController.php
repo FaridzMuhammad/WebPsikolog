@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Obat;
 use App\Models\Pasien;
+use App\Models\ResepHasObat;
 use App\Models\ResepObat;
 use App\Models\Sesi;
 use Illuminate\Http\Request;
@@ -104,24 +105,36 @@ class obatcontroller extends Controller
     {
         $data = ResepObat::all();
 
+        $obat = ResepHasObat::all();
+
         return view('dataObat.listResepObat', [
             'data' => $data,
+            'obat' => $obat,
         ]);
     }
 
     public function storeResep(Request $request)
     {
         $data = $request->all();
+        $meds = $request->input('obat');
+        $date = date('Y-m-d H:i:s');
 
         $request->validate([
             'keterangan' => 'required|max:500'
         ]);
 
-        ResepObat::create([
-            'id_obat' => $data['obat'],
+        $resep = ResepObat::create([
             'id_pasien' => $data['pasien'],
             'keterangan_resep' => $data['keterangan'],
         ]);
+
+        foreach($meds as $obat){
+            DB::insert("
+                INSERT INTO resep_has_obat
+                (id_resep_obat, id_obat, created_at, updated_at) 
+                VALUES (?, ?, ?, ?)  
+            ", [$resep->id, $obat, $date, $date]);
+        }
 
         return redirect()->route('resep.list')->with('success_message', 'Success!');
     }

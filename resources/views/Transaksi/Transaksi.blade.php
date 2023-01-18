@@ -44,8 +44,12 @@
                             <select name="resep" class="form-control select2 select2-hidden-accessible"
                                 style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                 @foreach ($resep as $item)
-                                    <option value="{{ $item->id }}">{{ $item->obat->nama_obat }} -
-                                        {{ $item->pasien->nama_pasien }} ({{ $item->keterangan_resep }})</option>
+                                    <option value="{{ $item->id }}">
+                                        @foreach ($obat as $meds)
+                                            {{ $meds->obat->nama_obat }}, 
+                                        @endforeach
+                                        {{ $item->pasien->pasien->nama_pasien }} | Sesi: {{ $item->pasien->tanggal_sesi }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
