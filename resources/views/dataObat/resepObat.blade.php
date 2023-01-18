@@ -35,7 +35,7 @@
                             <label>Obat</label>
                             <div class="select2-blue">
                                 <select class="select2" name="obat[]" multiple="multiple" data-placeholder="Pilih Obat"
-                                    data-dropdown-css-class="select2-blue" style="width: 100%;">
+                                    data-dropdown-css-class="select2-blue" style="width: 100%;" required>
                                     @foreach ($meds as $item)
                                         <option value="{{ $item->id }}">{{ $item->nama_obat }}</option>
                                     @endforeach
