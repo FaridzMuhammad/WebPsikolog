@@ -46,7 +46,9 @@
                                 @foreach ($resep as $item)
                                     <option value="{{ $item->id }}">
                                         @foreach ($obat as $meds)
-                                            {{ $meds->obat->nama_obat }}, 
+                                            @if ($meds->id_resep_obat == $item->id)
+                                                {{ $meds->obat->nama_obat }},
+                                            @endif
                                         @endforeach
                                         {{ $item->pasien->pasien->nama_pasien }} | Sesi: {{ $item->pasien->tanggal_sesi }}
                                     </option>
