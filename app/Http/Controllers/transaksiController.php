@@ -56,13 +56,15 @@ class transaksiController extends Controller
 
     public function editTransaksi($id)
     {
+        $payment = Payment::findOrFail($id);
         $patients = Sesi::all();
         $resep = ResepObat::all();
-        $payment = Payment::findOrFail($id);
+        $obat = ResepHasObat::all();
 
         return view('Transaksi.editTransaksi', [
             'patients' => $patients,
             'resep' => $resep,
+            'obat' => $obat,
             'payment' => $payment,
         ]);
     }

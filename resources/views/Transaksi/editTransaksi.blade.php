@@ -35,8 +35,7 @@
                             <select name="pasien" class="form-control select2 select2-hidden-accessible"
                                 style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                 @foreach ($patients as $patient)
-                                    <option {{ $payment->id_pasien == $patient->id ? 'selected' : '' }}
-                                        value="{{ $patient->id }}">{{ $patient->pasien->nama_pasien }}</option>
+                                    <option {{ $payment->id_pasien == $patient->id ? 'selected' : '' }} value="{{ $patient->id }}">{{ $patient->pasien->nama_pasien }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -45,9 +44,14 @@
                             <select name="resep" class="form-control select2 select2-hidden-accessible"
                                 style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                 @foreach ($resep as $item)
-                                    <option {{ $payment->id_resep_obat == $item->id ? 'selected' : '' }}
-                                        value="{{ $item->id }}">{{ $item->obat->nama_obat }} -
-                                        {{ $item->pasien->nama_pasien }} ({{ $item->keterangan_resep }})</option>
+                                    <option {{ $item->id == $payment->id_resep_obat ? 'selected' : '' }} value="{{ $item->id }}">
+                                        @foreach ($obat as $meds)
+                                            @if ($meds->id_resep_obat == $item->id)
+                                                {{ $meds->obat->nama_obat }},
+                                            @endif
+                                        @endforeach
+                                        {{ $item->pasien->pasien->nama_pasien }} | Sesi: {{ $item->pasien->tanggal_sesi }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
