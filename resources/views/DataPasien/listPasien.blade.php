@@ -41,7 +41,7 @@
                                 <tbody>
                                     @foreach ($data as $item)
                                         <tr>
-                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->id_pasien }}</td>
                                             <td>{{ $item->nama_pasien }}</td>
                                             <td>{{ $item->email_pasien }}</td>
                                             <td>{{ $item->nohp_pasien }}</td>
