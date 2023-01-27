@@ -107,6 +107,7 @@ class obatcontroller extends Controller
 
         $obat = ResepHasObat::all();
 
+        // dd($data);
         return view('dataObat.listResepObat', [
             'data' => $data,
             'obat' => $obat,
@@ -131,8 +132,8 @@ class obatcontroller extends Controller
         foreach ($meds as $obat) {
             DB::insert("
                 INSERT INTO resep_has_obat
-                (id_resep_obat, id_obat, created_at, updated_at) 
-                VALUES (?, ?, ?, ?)  
+                (id_resep_obat, id_obat, created_at, updated_at)
+                VALUES (?, ?, ?, ?)
             ", [$resep->id, $obat, $date, $date]);
         }
 
@@ -172,15 +173,15 @@ class obatcontroller extends Controller
         if ($meds != NULL) {
             DB::delete("
                 DELETE FROM resep_has_obat
-                WHERE 
-                id_resep_obat = ? 
+                WHERE
+                id_resep_obat = ?
             ", [$id]);
 
             foreach ($meds as $obat) {
                 DB::insert("
                     INSERT INTO resep_has_obat
-                    (id_resep_obat, id_obat, created_at, updated_at) 
-                    VALUES (?, ?, ?, ?)  
+                    (id_resep_obat, id_obat, created_at, updated_at)
+                    VALUES (?, ?, ?, ?)
                 ", [$resep->id, $obat, $date, $date]);
             }
         }
@@ -201,11 +202,11 @@ class obatcontroller extends Controller
         if (count($keyExists) > 0) {
             return redirect()->route('resep.list')->with('error_message', 'Obat ini masih ada dalam Resep Obat!');
         } else {
-            
+
             DB::delete("
                 DELETE FROM resep_has_obat
-                WHERE 
-                id_resep_obat = ? 
+                WHERE
+                id_resep_obat = ?
             ", [$id]);
 
             $resep->delete();

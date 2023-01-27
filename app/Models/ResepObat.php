@@ -25,6 +25,6 @@ class ResepObat extends Model
 
     public function pasien()
     {
-        return $this->belongsTo(Sesi::class, 'id_pasien', 'id_pasien');
+        return $this->belongsTo(Sesi::class, 'id_pasien', 'id');
     }
 }
